@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Read single-page Firecrawl Local and SEOmator reports with `seo-check-evidence`.
+  Both language versions of the skill include the collection commands.
+
 ## 0.1.0
 
 - The 25-point skill in English (`skills/seo-check-25`) and Finnish

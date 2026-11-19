@@ -30,6 +30,30 @@ Kohdat 1–20 ovat perustarkistus. Kohdat 21–25 koskevat spam-käytäntöjä j
    Sen tilat ovat englanniksi: FIX on KORJATTAVA, REVIEW on TARKISTA, N/A on EI SOVELLU ja NOT CHECKED on EI TARKISTETTU.
 4. Pääsy Search Consoleen, Bing Webmaster Toolsiin ja backlink-indeksiin, jos omistaja on sen antanut.
 
+## Julkaistun sivun tarkistus
+
+Voit tarkistaa yhden julkisen sivun [Firecrawl Localilla](https://crates.io/crates/firecrawl-local)
+ja [SEOmatorilla](https://github.com/seo-skills/seo-audit-skill). Komennot on testattu
+Firecrawl Localin versiolla 0.1.1 ja SEOmatorin versiolla 8.0.1. Aja ne peräkkäin
+tyhjässä työhakemistossa.
+
+```sh
+page=https://example.com/
+FIRECRAWL_CLOUD=off firecrawl-local scrape --public-only --browser never \
+  --format markdown "$page" > page.json
+seomator audit "$page" --categories core,images,content,schema,htmlval \
+  --concurrency 1 --no-cwv --no-save --fail-under 0 --format json > audit.json
+seo-check-evidence "$page" --firecrawl page.json --seomator audit.json
+```
+
+Firecrawl poimii sivun tekstin. SEOmator hakee sivun, robots.txt-tiedoston ja saatavilla
+olevat sivukartat. Yhdistetty JSON kertoo lähdeosoitteen, HTTP-tilakoodin, poimitun
+tekstin pituuden ja sääntöjen tulokset ryhmittäin. Voit antaa komennolle myös vain
+toisen raportin. Yksittäisten sääntöjen tunnisteet ja sivulta poimittu teksti löytyvät
+alkuperäisistä raporteista. Kirjaa havainto sen sivun ja tarkistuskohdan yhteyteen,
+jota se koskee. Sivuston laajuiset tarkistukset, Search Console ja oikeiden käyttäjien
+latausajat tarvitsevat omat aineistonsa.
+
 ## Kohdat
 
 | # | Kohta | Miten tarkistetaan | Hyväksytty |

@@ -13,6 +13,7 @@ dependencies = []
 
 [project.scripts]
 seo-check = "seo_check.cli:main"
+seo-check-evidence = "seo_check.evidence:main"
 
 [tool.setuptools.packages.find]
 include = ["seo_check*"]

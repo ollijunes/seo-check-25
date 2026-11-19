@@ -29,6 +29,29 @@ Points 1–20 are the base check. Points 21–25 cover spam policies and how sea
    ```
 4. Access to Search Console, Bing Webmaster Tools and a backlink index, if the owner has given it.
 
+## Evidence from a published page
+
+For an optional live check, install [Firecrawl Local](https://crates.io/crates/firecrawl-local)
+and [SEOmator](https://github.com/seo-skills/seo-audit-skill). These commands were tested
+with Firecrawl Local 0.1.1 and SEOmator 8.0.1. Run them in an empty working directory,
+one after the other.
+
+```sh
+page=https://example.com/
+FIRECRAWL_CLOUD=off firecrawl-local scrape --public-only --browser never \
+  --format markdown "$page" > page.json
+seomator audit "$page" --categories core,images,content,schema,htmlval \
+  --concurrency 1 --no-cwv --no-save --fail-under 0 --format json > audit.json
+seo-check-evidence "$page" --firecrawl page.json --seomator audit.json
+```
+
+Firecrawl extracts the page text. SEOmator fetches the page, robots.txt and available
+sitemaps and checks the selected categories. The combined JSON shows the source URL,
+HTTP status, extraction length and rule counts for each category. Either input can be
+used on its own. Read the original reports for the extracted text and individual rule
+IDs. Use each finding as evidence for that page and checklist point. Search Console,
+field performance and site-wide checks need their own data.
+
 ## The points
 
 | # | Point | How to check | Passes when |
