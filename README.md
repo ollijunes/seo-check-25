@@ -96,6 +96,20 @@ That is a shortened run on a three-page test site.
 
 Statuses: `OK`, `FIX`, `REVIEW` (a person decides), `N/A`, `NOT CHECKED`.
 
+## Evidence from a published page
+
+The optional `seo-check-evidence` command reads a Firecrawl Local scrape, a SEOmator
+audit, or both from disk. It checks that the reports cover the requested page.
+The build checker still works offline with the same 25 points.
+
+```sh
+seo-check-evidence https://example.com/ --firecrawl page.json --seomator audit.json
+```
+
+To collect the two JSON files, follow the single-page workflow in
+[English](skills/seo-check-25/SKILL.md#evidence-from-a-published-page) or
+[Finnish](skills/seo-tarkistus-25/SKILL.md#julkaistun-sivun-tarkistus).
+
 ## The 25 points
 
 | # | Point | `seo-check` |
