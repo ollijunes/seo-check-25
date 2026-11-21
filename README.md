@@ -30,6 +30,8 @@ Two parts:
 [Security](SECURITY.md) · [Contributing](CONTRIBUTING.md) ·
 [ollijunes.com](https://ollijunes.com)
 
+Read the story behind it: [in English](https://ollijunes.com/seo-check-25-a-25-point-seo-check-for-coding-agents/) · [suomeksi](https://ollijunes.com/fi/seo-check-25-25-kohdan-seo-tarkistus-koodausagentille/).
+
 ## Who it is for
 
 People who build static or server-rendered sites with an agent's help and
